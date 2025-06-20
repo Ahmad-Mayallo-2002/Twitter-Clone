@@ -25,11 +25,7 @@ export class FollowsController {
   }
 
   @Get('/get-followings')
-  getUserFollowings(
-    @Req() req: Request,
-    @Res() res: Response,
-    @Param() params: { userId: string },
-  ) {
-    return this.followsService.getUserFollowings(req, res, params);
+  getUserFollowings(@Res() res: Response) {
+    return this.followsService.getUserFollowings(res);
   }
 }

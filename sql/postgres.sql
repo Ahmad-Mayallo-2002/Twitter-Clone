@@ -1,0 +1,1 @@
+SELECT * FROM users JOIN follows ON followings = users.id;

@@ -41,7 +41,7 @@ export class UserService {
               id: result.rows[0].id,
             }),
           )
-          .json({ msg: 'Login is Done!' });
+          .json({ msg: 'Login is Done!', x: { token, id: result.rows[0].id } });
       },
     );
   }
@@ -121,10 +121,6 @@ export class UserService {
       `UPDATE users SET ${set.join(', ')} WHERE id=$${counter}`,
       [...bodyArray, Param.id],
       (err, result) => {
-        // log(`UPDATE users ${set.join(', ')} WHERE id=$${counter}`, [
-        //   ...bodyArray,
-        //   Param.id,
-        // ]);
         if (err) return res.status(500).json({ err: err.message });
         return res.status(200).json({ msg: 'Done!' });
       },
